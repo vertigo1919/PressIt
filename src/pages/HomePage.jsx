@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { FeedControls } from '../components/articles/FeedControls';
 import { ArticleList } from '../components/articles/ArticleList';
 import { useFetch } from '../hooks/useFetch';
@@ -6,13 +5,22 @@ import { getArticles } from '../api';
 import { LoadingSpinner } from '../components/shared/LoadingSpinner';
 import { ErrorBanner } from '../components/shared/ErrorBanner';
 import { translateFilterLabel } from '../utils/translateFilterLabel';
+import { useSearchParams } from 'react-router-dom';
 
 export function HomePage() {
-  // this state needs to be passed down to the sort component
-  const [sortLabel, setSortLabel] = useState('New');
+  //search params
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  // this state needs to be passed down to the viewtoggle comopnent
-  const [viewType, setViewType] = useState('extended');
+  const sortLabel = searchParams.get('sort') ?? 'New';
+  const viewType = searchParams.get('view') ?? 'extended';
+
+  function setSortLabel(label) {
+    setSearchParams({ sort: label, view: viewType });
+  }
+
+  function setViewType(type) {
+    setSearchParams({ sort: sortLabel, view: type });
+  }
 
   // translate menu label into query parameters
   const { sort_by, order } = translateFilterLabel(sortLabel);
