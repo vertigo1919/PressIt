@@ -1,8 +1,9 @@
 import { formatDistanceToNowStrict } from 'date-fns';
 import { Link } from 'react-router-dom';
+import { useShare } from '../../hooks/useShare';
 
 export function ArticleCardHeader({ article, viewType }) {
-  const articlePath = `/p/${article.topic}/comment/${article.article_id}`;
+  const articlePath = `/p/${article.topic}/comments/${article.article_id}`;
 
   const timeStamp = formatDistanceToNowStrict(article.created_at)
     .replace(' minutes', 'm')
@@ -11,31 +12,11 @@ export function ArticleCardHeader({ article, viewType }) {
     .replace(' years', 'y');
 
   const titleClass = `article-card-header-title ${viewType === 'compact' ? 'article-card-header-title-compact' : ''}`;
-  async function handleShare(e) {
-    // prevent default clicking behaviours
-    e.preventDefault();
 
-    // build full URL taking domain from browser
-    const fullUrl = `${window.location.origin}${articlePath}`;
-    const shareData = {
-      title: article.title,
-      text: `Check out this article: ${article.title}`,
-      url: fullUrl,
-    };
+  // I'm using my custom hook to obtain here a handle share function that I can call
+  // when share button is clicked
+  const { handleShare } = useShare();
 
-    try {
-      // native mobile share
-      if (navigator.share) {
-        await navigator.share(shareData);
-      } else {
-        // if it fails just copy link to clipbaord
-        await navigator.clipboard.writeText(fullUrl);
-        alert('Link copied to clipboard!');
-      }
-    } catch (err) {
-      console.log('Share cancelled or failed.', err);
-    }
-  }
   return (
     <header className="article-card-header">
       <div className="article-card-header-meta">
@@ -48,7 +29,11 @@ export function ArticleCardHeader({ article, viewType }) {
         </div>
         <span className="article-card-header-topic-name">p/{article.topic}</span>
         <span className="article-card-header-time-stamp">{timeStamp}</span>
-        <button className="article-card-header-more-btn" type="button" onClick={handleShare}>
+        <button
+          className="article-card-header-more-btn"
+          type="button"
+          onClick={() => handleShare(article.title, `${window.location.origin}${articlePath}`)}
+        >
           <svg
             width="20"
             height="20"
