@@ -9,6 +9,7 @@
   <a href="./planning/planning.md">💡 Planning Docs</a> ·
   <a href="https://PLACEHOLDER.netlify.app">🚀 Live Demo</a> ·
   <a href="https://github.com/vertigo1919/headless-press-api"> 🌐 Backend Repo</a>
+  <a href="./planning/toDo.md">📝 Development Status</a> ·
 </p>
 
 ---

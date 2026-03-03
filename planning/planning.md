@@ -181,7 +181,7 @@ App
                 │   │   │   ├── ArticleBody
                 │   │   │   └── ArticleFooter
                 │   │   │       ├── VoteControl
-                │   │   │       └── CommentLabel
+                │   │   │       └── CommentLinkButton
                 │   │   ├── CommentList
                 │   │   │   └── CommentCard
                 │   │   │       ├── CommentHeader
