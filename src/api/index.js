@@ -41,8 +41,8 @@ export async function getUsers() {
 }
 
 //GET  single Article > GET /api/articles/:article_id
-export async function getArticleById(article_id) {
-  const response = await fetch(`${API_BASE_URL}/articles/${article_id}`);
+export async function getArticleById(article_id, username) {
+  const response = await fetch(`${API_BASE_URL}/articles/${article_id}?username=${username}`);
   const data = await handleFetchResponse(response);
   return data.article;
 }
@@ -62,15 +62,27 @@ export async function getUserByUsername(username) {
 }
 
 // PATCH /api/articles/:article_id
-export async function updateVoteCount(article_id, inc_votes) {
+
+export async function updateArticleVote(article_id, inc_votes, username) {
   const response = await fetch(`${API_BASE_URL}/articles/${article_id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     // Sending heards is essential because the server needs to know what do with the string we are about to send,
-    body: JSON.stringify({ inc_votes: inc_votes }),
+    body: JSON.stringify({ inc_votes, username }),
   });
   const data = await handleFetchResponse(response);
   return data.article; // I return the article with the updated vote count
+}
+
+// PATCH /api/comments/:comment_id
+export async function updateCommentVote(comment_id, inc_votes, username) {
+  const response = await fetch(`${API_BASE_URL}/comments/${comment_id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ inc_votes, username }),
+  });
+  const data = await handleFetchResponse(response);
+  return data.comment; // updated comment with new votes
 }
 
 // POST /api/articles/:article_id/comments
