@@ -25,8 +25,10 @@
 - [x] Render Article Body
 - [x] Create custom hook use vote for implementing voting flow.
 - [x] Optimistic Voting on articles: Create the VoteButtons component. When clicked, immediately update the local vote count state by +1 or -1. Call updateVoteCount(). If the API fails, revert the state and show an error.
-- [ ] Finish rendering article footer
-- [ ] Render comments lists
+- [x] Finish comment footer
+- [x] Render comments []
+- [ ] Add link to userpage (both in article and comments)
+- [ ] Comment header add condition Original Poster badge
 - [ ] Comment Deletion: In CommentCard, check if the comment's author matches your UserContext username. If yes, show a Delete button. On click, call deleteCommentById(). If successful, filter that comment out of the parent component's state.
 - [ ] Comment Posting: Build the CommentComposer with a text area. On submit, call addCommentByArticleId() using the text and your Context username. On success, take the returned comment object and add it to the top of your comments state array. Clear the text area.
 
@@ -52,6 +54,7 @@
 
 - [x] CSS / Styling: Open index.css and start applying your PressIt color palette, flexbox layouts, and typography.
 - [ ] Deploly live demo
+- [ ] refactor util function for dates fn
 
 **Nice to have**
 

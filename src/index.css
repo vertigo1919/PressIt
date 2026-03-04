@@ -538,3 +538,123 @@ main {
   color: var(--color-off-white);
   line-height: 1;
 }
+
+/* COMMENTS LIST & CARD WRAPPER */
+.comments-list-main {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comment-card-main {
+  background: #05070d;
+  border-radius: 10px;
+  border: 1px solid rgba(17, 25, 40, 0.9);
+  padding: 10px 12px 8px 12px;
+}
+
+.comment-header {
+  margin-bottom: 4px;
+}
+
+.comment-header-meta {
+  display: flex;
+  align-items: center;
+}
+
+.comment-header-user-image-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comment-header-user-image {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-navy);
+  display: block;
+}
+
+.comment-header-user-name {
+  color: var(--color-off-white);
+  opacity: 0.9;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+  line-height: 1;
+}
+
+.comment-header-separator {
+  color: var(--color-off-white);
+  opacity: 0.4;
+  font-size: 11px !important;
+}
+
+.comment-header-time-stamp {
+  color: var(--color-off-white);
+  opacity: 0.5;
+  font-size: 11px !important;
+  margin: 0 !important;
+  line-height: 1;
+}
+
+.comment-body-main {
+  font-size: 13px !important;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-off-white);
+  opacity: 0.75;
+  margin: 8px 0 !important;
+}
+
+.comment-footer {
+  margin-top: 8px;
+}
+
+.comment-footer-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.comment-footer-buttons .vote-control {
+  transform: scale(0.9);
+  transform-origin: left center;
+}
+
+/* DELETE BUTTON STYLING */
+
+.delete-button-main {
+  background: var(--color-navy) !important;
+  border: none !important;
+  color: var(--color-off-white) !important;
+  opacity: 0.6 !important;
+  border-radius: 50% !important;
+  width: 28px !important;
+  height: 28px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.delete-button-main svg {
+  width: 14px !important;
+  height: 14px !important;
+  stroke: currentColor !important;
+  stroke-width: 2 !important;
+  fill: none !important;
+}
+
+.delete-button-main:hover {
+  background: #2a4a5f !important;
+  opacity: 1 !important;
+  color: #ff4c4c !important;
+}

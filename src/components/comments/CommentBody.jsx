@@ -1,7 +1,7 @@
-export function CommentBody() {
+export function CommentBody({ comment }) {
   return (
-    <div className="comment-body-main">
-      <h4>Comment Body</h4>
+    <div className="comment-body">
+      <p className="comment-body-main"> {comment.body} </p>
     </div>
   );
 }

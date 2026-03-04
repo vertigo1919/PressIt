@@ -1,18 +1,16 @@
 import { useVote } from '../../hooks/useVote';
 
-export function VoteControl({ article }) {
+export function VoteControl({ id, votes, userVote = 0, type }) {
   //NB currentVote records the vote action of the current session
   // 1 means the article has been upvoted
   // 0 means no action
   // -1 means the article has been downvoted
 
-  const { article_id, votes, user_vote = 0 } = article;
-
   const { displayVotes, currentVote, upvote, downvote } = useVote({
     initialVotes: votes,
-    initialUserVote: user_vote,
-    type: 'article',
-    id: article_id,
+    initialUserVote: userVote,
+    type: type,
+    id: id,
   });
 
   //build class names for upvote and downvote buttons

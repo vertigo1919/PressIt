@@ -6,17 +6,19 @@ import { useParams } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
 import { LoadingSpinner } from '../components/shared/LoadingSpinner';
 import { ErrorBanner } from '../components/shared/ErrorBanner';
+import { useUser } from '../contexts/UserContext';
 
 export function ArticlePage() {
   const { article_id } = useParams();
+  const { user } = useUser();
 
   const {
     data: article,
     isLoading: articleIsLoading,
     error: articleError,
   } = useFetch(getArticleById, {
-    params: [article_id],
-    dependencies: [article_id],
+    params: [article_id, user.username],
+    dependencies: [article_id, user.username],
   });
 
   const {
@@ -24,12 +26,9 @@ export function ArticlePage() {
     isLoading: commentsAreLoading,
     error: commentsError,
   } = useFetch(getCommentsByArticleId, {
-    params: [article_id],
-    dependencies: [article_id],
+    params: [article_id, user.username],
+    dependencies: [article_id, user.username],
   });
-
-  console.log('article >>>', article);
-  console.log('comments >>>', comments);
 
   return (
     <section className="article-page-main">

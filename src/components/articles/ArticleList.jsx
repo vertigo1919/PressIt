@@ -1,7 +1,6 @@
 import { ArticleCard } from './ArticleCard';
 
 export function ArticleList({ articles, viewType }) {
-  console.log('fetched articled >>>>', articles);
   return (
     <section className="article-list-main">
       {/* <h2>Article List</h2> */}

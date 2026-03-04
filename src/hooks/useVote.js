@@ -1,12 +1,21 @@
 import { useState } from 'react';
 import { updateArticleVote, updateCommentVote } from '../api';
 import { useUser } from '../contexts/UserContext';
+import { useEffect } from 'react';
 
 export function useVote({ initialVotes, initialUserVote = 0, type, id }) {
   const { user } = useUser();
   const [displayVotes, setDisplayVotes] = useState(initialVotes);
   const [currentVote, setCurrentVote] = useState(initialUserVote); // -1, 0, 1
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setCurrentVote(initialUserVote);
+  }, [initialUserVote]);
+
+  useEffect(() => {
+    setDisplayVotes(initialVotes);
+  }, [initialVotes]);
 
   const apiFn = type === 'article' ? updateArticleVote : updateCommentVote;
 
@@ -34,7 +43,7 @@ export function useVote({ initialVotes, initialUserVote = 0, type, id }) {
     setError(null);
 
     try {
-      await apiFn(id, delta, username);
+      await apiFn(id, direction, username);
     } catch (err) {
       // rollback
       setCurrentVote(prevVote);

@@ -48,15 +48,17 @@ export async function getArticleById(article_id, username) {
 }
 
 // GET article's comments > GET /api/articles/:article_id/comments
-export async function getCommentsByArticleId(article_id) {
-  const response = await fetch(`${API_BASE_URL}/articles/${article_id}/comments`);
+export async function getCommentsByArticleId(articleid, username) {
+  const response = await fetch(
+    `${API_BASE_URL}/articles/${articleid}/comments?username=${username}`
+  );
   const data = await handleFetchResponse(response);
   return data.comments;
 }
 
 // GET single user > GET /api/users/:username
 export async function getUserByUsername(username) {
-  const response = await fetch(`${API_BASE_URL}/users/${username}`);
+  const response = await fetch(`${API_BASE_URL}/users/${username}?username=${username}`);
   const data = await handleFetchResponse(response);
   return data.user;
 }
