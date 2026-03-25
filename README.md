@@ -5,9 +5,9 @@
 <p align="center">A Reddit-inspired news aggregator — React frontend for the Headless Press API</p>
 
 <p align="center">
+  <a href="https://pressit-app.netlify.app/">🚀 Live Demo</a> ·
   <a href="https://www.figma.com/proto/ckT1daSU4xjWEM9DCPLZRM/Headless-Press-API-front-end?node-id=0-1&t=GSGX4uLt2lVfTIgt-1">📱 Prototype</a> ·
   <a href="./planning/planning.md">💡 Planning Docs</a> ·
-  <a href="https://pressit-app.netlify.app/">🚀 Live Demo</a> ·
   <a href="https://github.com/vertigo1919/headless-press-api"> 🌐 Backend Repo</a> ·
   <a href="./planning/toDo.md">📝 Development Status</a> 
 </p>
